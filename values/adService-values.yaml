@@ -1,0 +1,21 @@
+appName: adservice
+containerImage: gcr.io/google-samples/microservices-demo/adservice
+imageTag: v0.2.3
+containerPort: 9555
+containerENV:
+- name: PORT
+  value: "9555"
+  
+readinessProbeTime: 5
+readinessProbeCmd: ["/bin/grpc_health_probe", "-addr=:9555"]
+livenessProbeTime: 5
+livenessProbeCmd: ["/bin/grpc_health_probe", "-addr=:9555"]
+resourceCPU: 100m
+resourceMemory: 64Mi
+resourceLimitCPU: 200m
+resourceLimitMemory: 128Mi
+
+
+servicePort: 9555
+containerPort: 9555
+serviceType: ClusterIP

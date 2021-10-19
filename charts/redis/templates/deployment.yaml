@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.appName }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.appName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.appName }}
+    spec:
+      containers:
+        - name: {{ .Values.containerName }}
+          image: "{{ .Values.containerImage }}:{{ .Values.imageTag}}"
+          ports:
+            - containerPort: {{ .Values.containerPort }}
+          readinessProbe:
+            periodSeconds: {{ .Values.readinessProbeTime }}
+            tcpSocket:
+              port: {{ .Values.containerPort }}
+          livenessProbe:
+            periodSeconds: {{ .Values.livenessProbeTime }}
+            tcpSocket:
+              port: {{ .Values.containerPort }}
+          volumeMounts:
+            - mountPath: /data
+              name: redis-data
+          resources:
+            requests:
+              cpu: {{ .Values.resourceCPU}}
+              memory: {{ .Values.resourceMemory}}
+            limits:
+              cpu: {{ .Values.resourceLimitCPU}}
+              memory: {{ .Values.resourceLimitMemory}}
+      volumes:
+        - name: redis-data
+          emptyDir: {}

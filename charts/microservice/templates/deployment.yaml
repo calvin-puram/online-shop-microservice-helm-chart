@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.appName}}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.appName}}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.appName}}
+    spec:
+      containers:
+        - name: {{ .Values.containerName}}
+          image: "{{ .Values.containerImage}}:{{ .Values.imageTag}}"
+          ports:
+            - containerPort: {{ .Values.containerPort}}
+          env:
+          {{- range .Values.containerENV}}
+            - name: {{ .name }}
+              value: {{ .value | quote}}
+          {{- end}}
+          readinessProbe:
+            periodSeconds: {{ .Values.readinessProbeTime}}
+            exec:
+              command: {{ .Values.readinessProbeCmd}}
+          livenessProbe:
+            periodSeconds: {{ .Values.livenessProbeTime}}
+            exec:
+              command: {{ .Values.livenessProbeCmd}}
+          resources:
+            requests:
+              cpu: {{ .Values.resourceCPU}}
+              memory: {{ .Values.resourceMemory}}
+            limits:
+              cpu: {{ .Values.resourceLimitCPU}}
+              memory: {{ .Values.resourceLimitMemory}}

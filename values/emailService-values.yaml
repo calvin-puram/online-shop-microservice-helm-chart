@@ -1,0 +1,3 @@
+appName: emailservice
+containerImage: gcr.io/google-samples/microservices-demo/emailservice
+imageTag: v0.2.3

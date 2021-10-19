@@ -1,0 +1,11 @@
+appName: redis-cart
+containerName: redis
+containerImage: redis
+imageTag: alpine
+containerPort: 6379
+readinessProbeTime: 5
+livenessProbeTime: 5
+resourceCPU: 70m
+resourceMemory: 64Mi
+resourceLimitCPU: 200m
+resourceLimitMemory: 128Mi

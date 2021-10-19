@@ -1,0 +1,25 @@
+appName: microservice-app
+containerName: server
+containerImage: gcr.io/google-samples/microservices-demo/emailservice
+imageTag: v0.2.3
+containerPort: 8080
+containerENV:
+- name: PORT
+  value: "8080"
+- name: DISABLE_TRACING
+  value: "1"
+- name: DISABLE_PROFILER
+  value: "1"
+readinessProbeTime: 5
+readinessProbeCmd: ["/bin/grpc_health_probe", "-addr=:8080"]
+livenessProbeTime: 5
+livenessProbeCmd: ["/bin/grpc_health_probe", "-addr=:8080"]
+resourceCPU: 100m
+resourceMemory: 64Mi
+resourceLimitCPU: 200m
+resourceLimitMemory: 128Mi
+
+
+servicePort: 8080
+containerPort: 8080
+serviceType: ClusterIP

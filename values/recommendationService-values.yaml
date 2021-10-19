@@ -1,0 +1,6 @@
+appName: recommendationservice
+containerImage:  gcr.io/google-samples/microservices-demo/recommendationservice:v0.2.3
+imageTag: v0.2.3
+
+
+

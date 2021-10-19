@@ -1,0 +1,21 @@
+appName: currencyservice
+containerImage: gcr.io/google-samples/microservices-demo/currencyservice
+imageTag: v0.2.3
+containerPort: 7000
+containerENV:
+- name: PORT
+  value: "7000"
+  
+readinessProbeTime: 5
+readinessProbeCmd: ["/bin/grpc_health_probe", "-addr=:7000"]
+livenessProbeTime: 5
+livenessProbeCmd: ["/bin/grpc_health_probe", "-addr=:7000"]
+resourceCPU: 100m
+resourceMemory: 64Mi
+resourceLimitCPU: 200m
+resourceLimitMemory: 128Mi
+
+
+servicePort: 7000
+containerPort: 7000
+serviceType: ClusterIP
