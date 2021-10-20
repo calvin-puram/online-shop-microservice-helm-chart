@@ -19,6 +19,11 @@ releases:
     chart: charts/microservice
     values:
       - values/currencyService-values.yaml   
+  - name: productcatalogservice
+    chart: charts/microservice
+    values:
+      - values/productcatalogService-values.yaml
+
 
   - name: paymentservice
     chart: charts/microservice
@@ -30,11 +35,7 @@ releases:
     values:
       - values/recommendationService-values.yaml
 
-  - name: productcatalogservice
-    chart: charts/microservice
-    values:
-      - values/productcatalogService-values.yaml
-
+  
   - name: shippingservice
     chart: charts/microservice
     values:

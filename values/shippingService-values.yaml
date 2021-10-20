@@ -1,21 +1,21 @@
 appName: shippingservice
 containerImage: gcr.io/google-samples/microservices-demo/shippingservice
 imageTag: v0.2.3
-containerPort: 3550
+containerPort: 50051
 containerENV:
 - name: PORT
-  value: "3550"
+  value: "50051"
   
 readinessProbeTime: 5
-readinessProbeCmd: ["/bin/grpc_health_probe", "-addr=:3550"]
+readinessProbeCmd: ["/bin/grpc_health_probe", "-addr=:50051"]
 livenessProbeTime: 5
-livenessProbeCmd: ["/bin/grpc_health_probe", "-addr=:3550"]
+livenessProbeCmd: ["/bin/grpc_health_probe", "-addr=:50051"]
 resourceCPU: 100m
 resourceMemory: 64Mi
 resourceLimitCPU: 200m
 resourceLimitMemory: 128Mi
 
 
-servicePort: 3550
-containerPort: 3550
+servicePort: 50051
+containerPort: 50051
 serviceType: ClusterIP

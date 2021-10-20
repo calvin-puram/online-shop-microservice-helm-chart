@@ -21,14 +21,7 @@ spec:
             - name: {{ .name }}
               value: {{ .value | quote}}
           {{- end}}
-          readinessProbe:
-            periodSeconds: {{ .Values.readinessProbeTime}}
-            exec:
-              command: {{ .Values.readinessProbeCmd}}
-          livenessProbe:
-            periodSeconds: {{ .Values.livenessProbeTime}}
-            exec:
-              command: {{ .Values.livenessProbeCmd}}
+          
           resources:
             requests:
               cpu: {{ .Values.resourceCPU}}

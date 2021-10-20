@@ -6,10 +6,7 @@ containerENV:
   - name: PORT
     value: "50051"
   
-readinessProbeTime: 5
-readinessProbeCmd: ["/bin/grpc_health_probe", "-addr=:50051"]
-livenessProbeTime: 5
-livenessProbeCmd: ["/bin/grpc_health_probe", "-addr=:50051"]
+
 resourceCPU: 100m
 resourceMemory: 64Mi
 resourceLimitCPU: 200m
