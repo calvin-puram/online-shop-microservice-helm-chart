@@ -1,0 +1,6 @@
+serviceMonitor:
+  enabled: true
+  labels:
+    release: monitorings
+
+redisAddress: redis://redis-cart:6379
